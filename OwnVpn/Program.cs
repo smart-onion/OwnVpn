@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Win32;
-using Microsoft.Win32.SafeHandles;
-using System.Net.Sockets;
-using System.Runtime.InteropServices;
-using System.Text;
 using Utility;
 using Microsoft.Extensions.Logging;
 internal class Program
@@ -14,7 +9,7 @@ internal class Program
         // Set up configuration
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .Build();
         // Set up DI
         var serviceProvider = new ServiceCollection()

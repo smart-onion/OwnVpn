@@ -14,29 +14,37 @@ public class VpnServer
     // dependencies 
     private readonly int _localPort;
     private readonly ILogger<VpnServer> _logger;
-    private readonly IConfigurationRoot _configuration;
+    private readonly IConfigurationRoot _settings;
     private readonly PacketFilterService _packetFilterService;
     private readonly TapAdapter _tapAdapter;
 
     public VpnServer(
         ILogger<VpnServer> logger,
-        IConfigurationRoot configuration, 
+        IConfigurationRoot settings, 
         PacketFilterService packetFilterService,
         TapAdapter tapAdapter
         )
     {
         _logger = logger;
-        _configuration = configuration;
+        _settings = settings;
         _packetFilterService = packetFilterService;
 
-        _localPort = configuration.GetValue<int>("LocalPort");
+        _localPort = settings.GetValue<int>("LocalPort");
+        if (_localPort == 0)
+        {
+            _logger.LogCritical("LocalPort value missing in appsettings.json");
+            throw new Exception();
+        }
+
         try
         {
+
             _tapAdapter = tapAdapter;
             _logger.LogInformation("Tap-adapter initialized");
         }
         catch (Exception ex)
         {
+
             _logger.LogCritical($"Failed to Initialize Tap_adapter: {ex.Message}");
             throw;
         }
@@ -85,6 +93,7 @@ public class VpnServer
                 _logger.LogInformation($"Trying to connect to client server {endPoint.Address}:{endPoint.Port}...");
                 udpServer.Connect(endPoint);
                 _logger.LogInformation("Connected to the client server.");
+                await udpServer.SendAsync(Encoding.UTF8.GetBytes(_tapAdapter.PhysicalAddress.ToString()));
                 await FromTapToClient(udpServer, endPoint);
             }
             catch(Exception ex)

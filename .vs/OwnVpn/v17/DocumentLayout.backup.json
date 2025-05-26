@@ -3,36 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\fff\\source\\repos\\OwnVpn\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\utility\\tapadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|solutionrelative:utility\\tapadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CAD293D4-A045-448F-BC2B-E83E175E4F95}|OwnVpnClient\\OwnVpnClient.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\ownvpnclient\\vpnclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAD293D4-A045-448F-BC2B-E83E175E4F95}|OwnVpnClient\\OwnVpnClient.csproj|solutionrelative:ownvpnclient\\vpnclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF4C2D77-DF71-4F06-B3A6-F8B4EB444B03}|OwnVpn\\OwnVpn.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\ownvpn\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF4C2D77-DF71-4F06-B3A6-F8B4EB444B03}|OwnVpn\\OwnVpn.csproj|solutionrelative:ownvpn\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CAD293D4-A045-448F-BC2B-E83E175E4F95}|OwnVpnClient\\OwnVpnClient.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\ownvpnclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAD293D4-A045-448F-BC2B-E83E175E4F95}|OwnVpnClient\\OwnVpnClient.csproj|solutionrelative:ownvpnclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CF4C2D77-DF71-4F06-B3A6-F8B4EB444B03}|OwnVpn\\OwnVpn.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\ownvpn\\vpnserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CF4C2D77-DF71-4F06-B3A6-F8B4EB444B03}|OwnVpn\\OwnVpn.csproj|solutionrelative:ownvpn\\vpnserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\utility\\ethpacket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|solutionrelative:utility\\ethpacket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\utility\\packetfilterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|solutionrelative:utility\\packetfilterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\utility\\ethpacketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|solutionrelative:utility\\ethpacketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\utility\\myendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|solutionrelative:utility\\myendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\utility\\tapadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A8CF0DA-93B8-45DF-B593-25619C2640BA}|Utility\\Utility.csproj|solutionrelative:utility\\tapadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CF4C2D77-DF71-4F06-B3A6-F8B4EB444B03}|OwnVpn\\OwnVpn.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\ownvpn\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{CF4C2D77-DF71-4F06-B3A6-F8B4EB444B03}|OwnVpn\\OwnVpn.csproj|solutionrelative:ownvpn\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CAD293D4-A045-448F-BC2B-E83E175E4F95}|OwnVpnClient\\OwnVpnClient.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\ownvpnclient\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CAD293D4-A045-448F-BC2B-E83E175E4F95}|OwnVpnClient\\OwnVpnClient.csproj|solutionrelative:ownvpnclient\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF4C2D77-DF71-4F06-B3A6-F8B4EB444B03}|OwnVpn\\OwnVpn.csproj|c:\\users\\fff\\source\\repos\\ownvpn\\ownvpn\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF4C2D77-DF71-4F06-B3A6-F8B4EB444B03}|OwnVpn\\OwnVpn.csproj|solutionrelative:ownvpn\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,93 +54,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TapAdapter.cs",
-              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\TapAdapter.cs",
-              "RelativeDocumentMoniker": "Utility\\TapAdapter.cs",
-              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\TapAdapter.cs",
-              "RelativeToolTip": "Utility\\TapAdapter.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAIwHYAAAABAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpnClient\\Program.cs",
+              "RelativeDocumentMoniker": "OwnVpnClient\\Program.cs",
+              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpnClient\\Program.cs",
+              "RelativeToolTip": "OwnVpnClient\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwCEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T10:38:53.503Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PacketFilterService.cs",
-              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\PacketFilterService.cs",
-              "RelativeDocumentMoniker": "Utility\\PacketFilterService.cs",
-              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\PacketFilterService.cs",
-              "RelativeToolTip": "Utility\\PacketFilterService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAkwBgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T09:48:45.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EthPacket.cs",
-              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\EthPacket.cs",
-              "RelativeDocumentMoniker": "Utility\\EthPacket.cs",
-              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\EthPacket.cs",
-              "RelativeToolTip": "Utility\\EthPacket.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAcwCsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T09:46:17.287Z",
+              "WhenOpened": "2025-05-26T13:02:14.677Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "EthPacketManager.cs",
-              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\EthPacketManager.cs",
-              "RelativeDocumentMoniker": "Utility\\EthPacketManager.cs",
-              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\EthPacketManager.cs",
-              "RelativeToolTip": "Utility\\EthPacketManager.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpnClient\\appsettings.json",
+              "RelativeDocumentMoniker": "OwnVpnClient\\appsettings.json",
+              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpnClient\\appsettings.json",
+              "RelativeToolTip": "OwnVpnClient\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-26T12:31:38.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TapAdapter.cs",
+              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\TapAdapter.cs",
+              "RelativeDocumentMoniker": "Utility\\TapAdapter.cs",
+              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\TapAdapter.cs",
+              "RelativeToolTip": "Utility\\TapAdapter.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAIwCYAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T09:46:05.533Z",
+              "WhenOpened": "2025-05-26T12:21:09.746Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "MyEndPoint.cs",
-              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\MyEndPoint.cs",
-              "RelativeDocumentMoniker": "Utility\\MyEndPoint.cs",
-              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\Utility\\MyEndPoint.cs",
-              "RelativeToolTip": "Utility\\MyEndPoint.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T09:05:44.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpn\\appsettings.json",
-              "RelativeDocumentMoniker": "OwnVpn\\appsettings.json",
-              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpn\\appsettings.json",
-              "RelativeToolTip": "OwnVpn\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-26T08:53:50.544Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpn\\Program.cs",
               "RelativeDocumentMoniker": "OwnVpn\\Program.cs",
               "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpn\\Program.cs",
               "RelativeToolTip": "OwnVpn\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T08:43:13.108Z",
+              "WhenOpened": "2025-05-26T12:13:30.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpn\\appsettings.json",
+              "RelativeDocumentMoniker": "OwnVpn\\appsettings.json",
+              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpn\\appsettings.json",
+              "RelativeToolTip": "OwnVpn\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-26T12:13:25.004Z",
               "EditorCaption": ""
             },
             {
@@ -155,9 +125,22 @@
               "RelativeDocumentMoniker": "OwnVpn\\VpnServer.cs",
               "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpn\\VpnServer.cs",
               "RelativeToolTip": "OwnVpn\\VpnServer.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAkwCsAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAuwKIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T14:19:20.311Z",
+              "WhenOpened": "2025-05-26T12:12:36.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VpnClient.cs",
+              "DocumentMoniker": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpnClient\\VpnClient.cs",
+              "RelativeDocumentMoniker": "OwnVpnClient\\VpnClient.cs",
+              "ToolTip": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpnClient\\VpnClient.cs",
+              "RelativeToolTip": "OwnVpnClient\\VpnClient.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAMwCQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T12:10:38.251Z",
               "EditorCaption": ""
             }
           ]

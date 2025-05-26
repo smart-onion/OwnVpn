@@ -31,15 +31,19 @@ namespace Utility
         static object locker = new object();
         static TapAdapter? instance = null;
         private readonly ILogger<TapAdapter> _logger;
-        private readonly IConfigurationRoot _configuration;
+        private readonly IConfigurationRoot _settings;
         private static readonly SemaphoreSlim _fileLock = new SemaphoreSlim(1, 1);
-        public TapAdapter(ILogger<TapAdapter> logger, IConfigurationRoot configuration) 
+
+        public PhysicalAddress PhysicalAddress { get; private set; }
+
+        public TapAdapter(ILogger<TapAdapter> logger, IConfigurationRoot settings) 
         { 
             if(instance == null)
             {
                 _logger = logger;
-                _configuration = configuration;
+                _settings = settings;
                 Init();
+                SetTAPMacAddress();
                 instance = this;
             }
             else
@@ -154,6 +158,21 @@ namespace Utility
                 }
             }
             return null;
+        }
+
+        private void SetTAPMacAddress()
+        {
+            foreach (var adapter in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                string name = adapter.Name;
+                string description = adapter.Description;
+
+                if (description.Contains("TAP", StringComparison.OrdinalIgnoreCase) ||
+                    name.Contains("TAP", StringComparison.OrdinalIgnoreCase))
+                {
+                    PhysicalAddress = adapter.GetPhysicalAddress();
+                }
+            }
         }
     }
 
