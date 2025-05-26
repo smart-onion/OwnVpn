@@ -1,0 +1,221 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "OwnVpn/1.0.0": {
+        "dependencies": {
+          "PcapDotNet": "0.10.2",
+          "PcapDotNet.Packets": "1.0.4.1",
+          "System.Management": "9.0.5",
+          "Utility": "1.0.0",
+          "WebSocketSharp-netstandard": "1.0.1"
+        },
+        "runtime": {
+          "OwnVpn.dll": {}
+        }
+      },
+      "PacketDotNet/1.4.7": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/PacketDotNet.dll": {
+            "assemblyVersion": "1.4.7.0",
+            "fileVersion": "1.4.7.0"
+          }
+        }
+      },
+      "PcapDotNet/0.10.2": {
+        "runtime": {
+          "lib/net40/PcapDotNet.Core.Extensions.dll": {
+            "assemblyVersion": "0.10.0.20638",
+            "fileVersion": "0.10.0.0"
+          },
+          "lib/net40/PcapDotNet.Core.dll": {
+            "assemblyVersion": "0.10.0.20632",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "PcapDotNet.Base/1.0.4.1": {
+        "runtime": {
+          "lib/netstandard2.0/PcapDotNet.Base.dll": {
+            "assemblyVersion": "1.0.4.1",
+            "fileVersion": "1.0.4.1"
+          }
+        }
+      },
+      "PcapDotNet.Packets/1.0.4.1": {
+        "dependencies": {
+          "PcapDotNet.Base": "1.0.4.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PcapDotNet.Packets.dll": {
+            "assemblyVersion": "1.0.4.1",
+            "fileVersion": "1.0.4.1"
+          }
+        }
+      },
+      "SharpPcap/6.3.0": {
+        "dependencies": {
+          "PacketDotNet": "1.4.7",
+          "System.Memory": "4.5.5",
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SharpPcap.dll": {
+            "assemblyVersion": "6.3.0.0",
+            "fileVersion": "6.3.0.0"
+          }
+        }
+      },
+      "System.CodeDom/9.0.5": {
+        "runtime": {
+          "lib/net9.0/System.CodeDom.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.525.21509"
+          }
+        }
+      },
+      "System.Management/9.0.5": {
+        "dependencies": {
+          "System.CodeDom": "9.0.5"
+        },
+        "runtime": {
+          "lib/net9.0/System.Management.dll": {
+            "assemblyVersion": "9.0.0.5",
+            "fileVersion": "9.0.525.21509"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net9.0/System.Management.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "9.0.0.5",
+            "fileVersion": "9.0.525.21509"
+          }
+        }
+      },
+      "System.Memory/4.5.5": {},
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "System.Text.Encoding.CodePages/6.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
+      "WebSocketSharp-netstandard/1.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/websocket-sharp.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        }
+      },
+      "Utility/1.0.0": {
+        "dependencies": {
+          "SharpPcap": "6.3.0",
+          "System.Management": "9.0.5"
+        },
+        "runtime": {
+          "Utility.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OwnVpn/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PacketDotNet/1.4.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xh4MGjkDFhJfFtAr6IEwg3ocPm3TO0/AxbYeCVoh9BaVT0xeWJB1p0nwKQ9olsQiQtSqF8M0UXz97U2VnOYY0w==",
+      "path": "packetdotnet/1.4.7",
+      "hashPath": "packetdotnet.1.4.7.nupkg.sha512"
+    },
+    "PcapDotNet/0.10.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IZ7I4BQXkWKB2RJlNQCcq8HRmkeisoynFDz7Kq2hkp6GPumGRDX05Iuzl7eL4OeggAY+kaErqP5U+cfe4mEOhA==",
+      "path": "pcapdotnet/0.10.2",
+      "hashPath": "pcapdotnet.0.10.2.nupkg.sha512"
+    },
+    "PcapDotNet.Base/1.0.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-khE9O7g3UPL5NKYU7TaCL8Dv5PEORTftsQsRJVdVMbS5Z5o/Gi57Un4o9i4+JJlhwsUFzDUjdPmJpmMMcYj+Ww==",
+      "path": "pcapdotnet.base/1.0.4.1",
+      "hashPath": "pcapdotnet.base.1.0.4.1.nupkg.sha512"
+    },
+    "PcapDotNet.Packets/1.0.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-owCnVChEv1ACWUrDaRjxk0pnE6ZSkdQFKaZbTVFWAE+JxoTJCnWKpzYjeZPNRGN+6bK0ONRlFmcF1047ILMCzg==",
+      "path": "pcapdotnet.packets/1.0.4.1",
+      "hashPath": "pcapdotnet.packets.1.0.4.1.nupkg.sha512"
+    },
+    "SharpPcap/6.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9tFnPgVYWJj/6fQRFLV34n0Uh9SLwi2zkQ/dPaxx8ZoNuPm1XuJU731qWMsMJlwQD6FL0AFeQpRj7zXLV8iu1Q==",
+      "path": "sharppcap/6.3.0",
+      "hashPath": "sharppcap.6.3.0.nupkg.sha512"
+    },
+    "System.CodeDom/9.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cuzLM2MWutf9ZBEMPYYfd0DXwYdvntp7VCT6a/wvbKCa2ZuvGmW74xi+YBa2mrfEieAXqM4TNKlMmSnfAfpUoQ==",
+      "path": "system.codedom/9.0.5",
+      "hashPath": "system.codedom.9.0.5.nupkg.sha512"
+    },
+    "System.Management/9.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n6o9PZm9p25+zAzC3/48K0oHnaPKTInRrxqFq1fi/5TPbMLjuoCm/h//mS3cUmSy+9AO1Z+qsC/Ilt/ZFatv5Q==",
+      "path": "system.management/9.0.5",
+      "hashPath": "system.management.9.0.5.nupkg.sha512"
+    },
+    "System.Memory/4.5.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Text.Encoding.CodePages/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZFCILZuOvtKPauZ/j/swhvw68ZRi9ATCfvGbk1QfydmcXBkIWecWKn/250UH7rahZ5OoDBaiAudJtPvLwzw85A==",
+      "path": "system.text.encoding.codepages/6.0.0",
+      "hashPath": "system.text.encoding.codepages.6.0.0.nupkg.sha512"
+    },
+    "WebSocketSharp-netstandard/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-knoinAv31vbdxXdypnzN2MPX5hyntVLWceq6OdWRXkr9zzqp/RWbxSuLFGbkW8De1061URgNAN43BUTlgMx1CA==",
+      "path": "websocketsharp-netstandard/1.0.1",
+      "hashPath": "websocketsharp-netstandard.1.0.1.nupkg.sha512"
+    },
+    "Utility/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

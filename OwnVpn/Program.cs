@@ -1,0 +1,51 @@
+﻿using Microsoft.Win32;
+using Microsoft.Win32.SafeHandles;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
+using System.Text;
+using Utility;
+internal class Program
+{
+    
+
+
+    private static async Task Main(string[] args)
+    {
+        await VpnServer.Run();
+        
+        Console.WriteLine("pending...");
+        Console.ReadKey();
+    }
+
+    private static byte[] GetDemiPacket()
+    {
+        byte[] demiPacket = new byte[60]; // Minimum Ethernet frame size
+
+        // Destination MAC (broadcast)
+        demiPacket[0] = 0xFF;
+        demiPacket[1] = 0xFF;
+        demiPacket[2] = 0xFF;
+        demiPacket[3] = 0xFF;
+        demiPacket[4] = 0xFF;
+        demiPacket[5] = 0xFF;
+
+        // Source MAC (random)
+        demiPacket[6] = 0x00;
+        demiPacket[7] = 0x11;
+        demiPacket[8] = 0x22;
+        demiPacket[9] = 0x33;
+        demiPacket[10] = 0x44;
+        demiPacket[11] = 0x55;
+
+        // EtherType (IPv4)
+        demiPacket[12] = 0x08;
+        demiPacket[13] = 0x00;
+
+        // Dummy payload (zeros)
+        for (int i = 14; i < 60; i++)
+        {
+            demiPacket[i] = 0x00;
+        }
+        return demiPacket;
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "dgSpecHash": "fg10oEFIm5o=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fff\\source\\repos\\OwnVpn\\OwnVpn\\OwnVpn.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fff\\.nuget\\packages\\packetdotnet\\1.4.7\\packetdotnet.1.4.7.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\pcapdotnet\\0.10.2\\pcapdotnet.0.10.2.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\pcapdotnet.base\\1.0.4.1\\pcapdotnet.base.1.0.4.1.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\pcapdotnet.packets\\1.0.4.1\\pcapdotnet.packets.1.0.4.1.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\sharppcap\\6.3.0\\sharppcap.6.3.0.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\system.codedom\\9.0.5\\system.codedom.9.0.5.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\system.management\\9.0.5\\system.management.9.0.5.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\websocketsharp-netstandard\\1.0.1\\websocketsharp-netstandard.1.0.1.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PcapDotNet 0.10.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PcapDotNet",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "OwnVpn\\OwnVpn.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "OwnVpnClient\\OwnVpnClient.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

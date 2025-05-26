@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "P+rc3v/WUGg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fff\\source\\repos\\OwnVpn\\SignalServer\\SignalServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fff\\.nuget\\packages\\system.codedom\\9.0.5\\system.codedom.9.0.5.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\system.management\\9.0.5\\system.management.9.0.5.nupkg.sha512",
+    "C:\\Users\\fff\\.nuget\\packages\\websocketsharp-netstandard\\1.0.1\\websocketsharp-netstandard.1.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

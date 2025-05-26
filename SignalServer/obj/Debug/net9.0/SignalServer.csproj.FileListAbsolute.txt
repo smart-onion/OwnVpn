@@ -1,0 +1,17 @@
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\SignalServer.csproj.AssemblyReference.cache
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\SignalServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\SignalServer.AssemblyInfoInputs.cache
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\SignalServer.AssemblyInfo.cs
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\SignalServer.csproj.CoreCompileInputs.cache
+C:\Users\fff\source\repos\OwnVpn\SignalServer\bin\Debug\net9.0\SignalServer.exe
+C:\Users\fff\source\repos\OwnVpn\SignalServer\bin\Debug\net9.0\SignalServer.deps.json
+C:\Users\fff\source\repos\OwnVpn\SignalServer\bin\Debug\net9.0\SignalServer.runtimeconfig.json
+C:\Users\fff\source\repos\OwnVpn\SignalServer\bin\Debug\net9.0\SignalServer.dll
+C:\Users\fff\source\repos\OwnVpn\SignalServer\bin\Debug\net9.0\SignalServer.pdb
+C:\Users\fff\source\repos\OwnVpn\SignalServer\bin\Debug\net9.0\websocket-sharp.dll
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\SignalSe.D199E62E.Up2Date
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\SignalServer.dll
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\refint\SignalServer.dll
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\SignalServer.pdb
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\SignalServer.genruntimeconfig.cache
+C:\Users\fff\source\repos\OwnVpn\SignalServer\obj\Debug\net9.0\ref\SignalServer.dll
