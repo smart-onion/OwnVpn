@@ -1,20 +1,36 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Win32;
 using Microsoft.Win32.SafeHandles;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
 using Utility;
+using Microsoft.Extensions.Logging;
 internal class Program
 {
-    
-
-
     private static async Task Main(string[] args)
     {
-        await VpnServer.Run();
-        
-        Console.WriteLine("pending...");
-        Console.ReadKey();
+        // Set up configuration
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+        // Set up DI
+        var serviceProvider = new ServiceCollection()
+            .AddSingleton(configuration)
+            .AddLogging(builder => builder.AddConsole()) // Add logging
+            .AddSingleton<TapAdapter>()
+            .AddSingleton<PacketFilterService>()
+            .AddSingleton<VpnServer>()
+            .BuildServiceProvider();
+
+        using (var scope = serviceProvider.CreateScope())
+        {
+            var myService = scope.ServiceProvider.GetService<VpnServer>();
+            await myService.Run(); // Triggers warning: 'DoWork' is obsolete
+            // myService.DoWorkAsync(); // Use this instead
+        }
     }
 
     private static byte[] GetDemiPacket()

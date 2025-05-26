@@ -100,10 +100,10 @@ public class VpnClient
             byte[] buffer = await _tapAdapter.ReadAsync();
             //var readBytes = _tapAdapter.Read(ref buffer);
             //await _udpLock.WaitAsync();
-            //PhysicalAddress.TryParse("00-FF-52-DD-F2-37", out PhysicalAddress? clientAddr);
-            //if (clientAddr == null) throw new Exception("Failed to parce mac address");
-            //var receivedAddr = EthPacket.GetSourceMAC(buffer);
-            //if (!receivedAddr.Equals(clientAddr))
+            PhysicalAddress.TryParse("00-FF-52-DD-F2-37", out PhysicalAddress? clientAddr);
+            if (clientAddr == null) throw new Exception("Failed to parce mac address");
+            var receivedAddr = EthPacket.GetSourceMAC(buffer);
+            if (!receivedAddr.Equals(clientAddr))
             {
                 try
                 {

@@ -8,6 +8,7 @@ using SharpPcap;
 using PacketDotNet;
 using System.Net;
 using System.Net.NetworkInformation;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Utility
 {
@@ -16,6 +17,7 @@ namespace Utility
         public IPAddress Source { get; set; }
         public IPAddress Destination { get; set; }
         public IPVersion Version { get; set; }
+        public PhysicalAddress PhysicalAddress { get; set; }
 
         public readonly byte[] Data;
 
@@ -36,6 +38,9 @@ namespace Utility
         private void ParseRawPacket(byte[] rawData)
         {
             var packet = PacketDotNet.Packet.ParsePacket(LinkLayers.Ethernet, Data);
+
+            var ethPacket = packet.Extract<PacketDotNet.EthernetPacket>();
+            PhysicalAddress = ethPacket.SourceHardwareAddress;
 
             var ipPacket = packet.Extract<PacketDotNet.IPv4Packet>();
             if(ipPacket != null)
