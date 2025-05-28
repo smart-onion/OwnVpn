@@ -2,11 +2,13 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Win32.SafeHandles;
 using System;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Management;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using System.Threading.Channels;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
@@ -32,8 +34,11 @@ namespace Utility
         static TapAdapter? instance = null;
         private readonly ILogger<TapAdapter> _logger;
         private readonly IConfigurationRoot _settings;
-        private static readonly SemaphoreSlim _fileLock = new SemaphoreSlim(1, 1);
-
+        private static readonly SemaphoreSlim _readLock = new SemaphoreSlim(1, 1);
+        private static readonly SemaphoreSlim _writeLock = new SemaphoreSlim(1, 1);
+        private readonly Channel<(byte[] data, int len)> _readQueue = Channel.CreateUnbounded<(byte[], int)>();
+        private readonly Channel<(byte[] data, int len)> _writeQueue = Channel.CreateUnbounded<(byte[], int)>();
+        private FileStream _tapStream;
         public PhysicalAddress PhysicalAddress { get; private set; }
 
         public TapAdapter(ILogger<TapAdapter> logger, IConfigurationRoot settings) 
@@ -65,61 +70,169 @@ namespace Utility
 
                 if (!result) throw new Exception("Failed connection to TAP adapter");
                 _logger.LogInformation("TAP adapter connected");
+                var safeHandle = new SafeFileHandle(tap, ownsHandle: false);
+
+                _tapStream = new FileStream(safeHandle, FileAccess.ReadWrite, bufferSize: 4096, isAsync: true);
+                Task.Run(async () => EnqueueReadAsync());
+                Task.Run(async () => DequeueWriteAsync());
             }
         }
+        private async Task DequeueWriteAsync()
+        {
 
+            while (true)
+            {
+                await Task.Delay(100);
+#if DEBUG
+                _logger.LogWarning($"BEFORE SEM LOCK WRITE");
+#endif
+                await _writeLock.WaitAsync().ConfigureAwait(false);
+#if DEBUG
+                _logger.LogWarning($"AFTER SEM LOCK WRITE");
+#endif
+                try
+                {
+                    //if (_writeQueue.TryDequeue(out var packet))
+                    //{
+                    //var packet = await _writeQueue.Reader.ReadAsync();
+                    //await _tapStream.WriteAsync(packet.data, 0, packet.len).ConfigureAwait(false);
+
+                    _writeQueue.Reader.TryRead(out (byte[] data, int len) packet);
+                    _tapStream.Write(packet.data, 0, packet.len);//.ConfigureAwait(false);
+#if DEBUG
+                    _logger.LogInformation($"{packet.len} Dequeue to TAP adapter");
+#endif
+                    //}
+                    //else
+                    //{
+                        _logger.LogError("Failed to dequeue on WriteAsync");
+                    //}
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning($"Exception on TapAdapter.WriteAsync {ex.Message}");
+                }
+                finally
+                {
+                    _writeLock.Release();
+                }
+            }
+        }
+        public async Task<bool> EnqueueWrite(byte[] data, int len)
+        {
+            _writeQueue.Writer.TryWrite((data, len));
+            return true;
+        }
+        private async Task EnqueueReadAsync()
+        {
+            while (true)
+            {
+                await Task.Delay(100);
+                // Enqueue packet instead of writing directly
+                await _readLock.WaitAsync().ConfigureAwait(false);
+                try
+                {
+                    byte[] buffer = new byte[TapAdapter.BufferSize];
+
+                    //int bytes = await _tapStream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                    int bytes = _tapStream.Read(buffer, 0, buffer.Length);//.ConfigureAwait(false);
+                    var result = new byte[bytes];
+                    Array.Copy(buffer, result, bytes);
+                    //await _readQueue.Writer.WriteAsync((result, bytes));
+                    _readQueue.Writer.TryWrite((result, bytes));
+#if DEBUG
+                    _logger.LogInformation($"{bytes} Enqueue from TAP adapter");
+#endif
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning($"Exception on TapAdapter.ReadAsync {ex.Message}");
+                }
+                finally
+                {
+                    _readLock.Release();
+                }
+            }
+        }
+        public async Task<(byte[] data, int len)?> DequeueRead()
+        {
+            //if(_readQueue.TryDequeue(out var packet))
+            //{
+            _readQueue.Reader.TryRead(out (byte[] data, int len) packet) ;
+            return packet;
+            //}
+            //else
+            //{
+#if DEBUG
+                //_logger.LogWarning($"Failed to dequeue on read {_readQueue.Count}");
+#endif
+            //}
+            return null;
+        }
         public async Task<bool> WriteAsync(byte[] data, int len)
         {
-            await _fileLock.WaitAsync();
+#if DEBUG
+            _logger.LogWarning($"BEFORE SEM LOCK WRITE");
+#endif
+            await _writeLock.WaitAsync();
+#if DEBUG
+            _logger.LogWarning($"AFTER SEM LOCK WRITE");
+#endif
             try
             {
-                var safeHandle = new SafeFileHandle(tap, ownsHandle: false);
-                using (var fs = new FileStream(safeHandle, FileAccess.Write))
-                {
-                    await fs.WriteAsync(data, 0, len);
+                //if (_packetQueue.TryDequeue(out var packet))
+                //{
+                    await _tapStream.WriteAsync(data, 0, len).ConfigureAwait(false);
 #if DEBUG
                     _logger.LogInformation($"{len} write to TAP adapter");
 #endif
-                }
-                return true;
+                    return true;
+                //}
+                //else
+                //{
+                    //_logger.LogError("Failed to dequeue on WriteAsync");
+                    //return false;
+                //}
             }
             catch (Exception ex)
             {
                 _logger.LogWarning($"Exception on TapAdapter.WriteAsync {ex.Message}");
                 return false;
             }
-            finally { _fileLock.Release(); }
+            finally {
+                _writeLock.Release();
+                      }
         }
 
         public async Task<byte[]> ReadAsync()
         {
-            await _fileLock.WaitAsync();
+#if DEBUG
+            _logger.LogWarning($"BEFORE SEM LOCK READ");
+#endif
+            await _readLock.WaitAsync();
+#if DEBUG
+            _logger.LogWarning($"AFTER SEM LOCK READ");
+#endif
             try
             {
-                var safeHandle = new SafeFileHandle(tap, ownsHandle: false);
                 byte[] buffer = new byte[TapAdapter.BufferSize];
-                using (var fs = new FileStream(safeHandle, FileAccess.Read))
-                {
-                    int bytes = await fs.ReadAsync(buffer, 0, buffer.Length);
-#if DEBUG
-                    _logger.LogInformation($"{bytes} read from TAP adapter");
-#endif
-                    var result = new byte[bytes];
-                    
-                    for (int i = 0;i < result.Length; i++)
-                    {
-                        result[i] = buffer[i];
-                    }
 
-                    return result;
-                }
+                int bytes = await _tapStream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+#if DEBUG
+                _logger.LogInformation($"{bytes} read from TAP adapter");
+#endif
+                var result = new byte[bytes];
+                Array.Copy(buffer, result, bytes);
+                return result;
             }
             catch (Exception ex)
             {
                 _logger.LogWarning($"Exception on TapAdapter.ReadAsync {ex.Message}");
                 return new byte[0];
             }
-            finally { _fileLock.Release(); }
+            finally {
+                _readLock.Release();
+                      }
 }
         
         [Obsolete("Use WriteAsync instead.")]
@@ -172,6 +285,27 @@ namespace Utility
                 {
                     PhysicalAddress = adapter.GetPhysicalAddress();
                 }
+            }
+        }
+
+        public void Dispose()
+        {
+            try
+            {
+                _tapStream?.Dispose();
+                if (tap != IntPtr.Zero)
+                {
+                    SetTapMediaStatus(tap, false); // Disconnect TAP adapter
+                                                   // Note: Tap.dll may require a CloseTapDevice function; add if available
+                }
+                _readLock.Dispose();
+                _writeLock.Dispose();
+                instance = null;
+                _logger.LogInformation("TapAdapter disposed");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning($"Exception on TapAdapter.Dispose: {ex.Message}");
             }
         }
     }

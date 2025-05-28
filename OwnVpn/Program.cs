@@ -15,7 +15,7 @@ internal class Program
         var serviceProvider = new ServiceCollection()
             .AddSingleton(configuration)
             .AddLogging(builder => builder.AddConsole()) // Add logging
-            .AddSingleton<TapAdapter>()
+            .AddSingleton<NetAdapter, TapPcap>()
             .AddSingleton<PacketFilterService>()
             .AddSingleton<VpnServer>()
             .BuildServiceProvider();

@@ -19,7 +19,7 @@ namespace OwnVpnClient
             var serviceProvider = new ServiceCollection()
                 .AddSingleton(configuration)
                 .AddLogging(builder => builder.AddConsole()) // Add logging
-                .AddSingleton<TapAdapter>()
+                .AddSingleton<NetAdapter, TapPcap>()
                 .AddSingleton<PacketFilterService>()
                 .AddSingleton<VpnClient>()
                 .BuildServiceProvider();
@@ -27,6 +27,7 @@ namespace OwnVpnClient
             using (var scope = serviceProvider.CreateScope())
             {
                 var myService = scope.ServiceProvider.GetService<VpnClient>();
+                //Console.ReadKey();
                 await myService.Run(args); // Triggers warning: 'DoWork' is obsolete
                                        // myService.DoWorkAsync(); // Use this instead
             }

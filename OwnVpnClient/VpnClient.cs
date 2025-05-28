@@ -15,12 +15,12 @@ public class VpnClient
     private readonly ILogger<VpnClient> _logger;
     private readonly IConfigurationRoot _settings;
     private readonly PacketFilterService _packetFilterService;
-    private readonly TapAdapter _tapAdapter;
+    private readonly NetAdapter _tapAdapter;
     public VpnClient(
         ILogger<VpnClient> logger,
         IConfigurationRoot settings,
         PacketFilterService packetFilterService,
-        TapAdapter tapAdapter
+        NetAdapter tapAdapter
         )
     {
         _logger = logger;
@@ -71,7 +71,9 @@ public class VpnClient
                 i++;
             }
         }
-
+#if DEBUG
+        ip = "9.21.20.216";
+#endif
         if (ip.IsNullOrEmpty())
         {
             Console.WriteLine("Usage: --ip [ip] --port [port]");
@@ -131,6 +133,7 @@ public class VpnClient
     {
         while (true)
         {
+
             var receivedResult = await udp.ReceiveAsync();
 #if DEBUG
             _logger.LogInformation($"received from server {receivedResult.Buffer.Length} bytes");
@@ -138,7 +141,12 @@ public class VpnClient
             byte[] buffer = receivedResult.Buffer;
             int bytesRead = buffer.Length;
 
-            await _tapAdapter.WriteAsync(buffer, bytesRead);
+            //await _tapAdapter.WriteAsync(buffer, bytesRead);
+            var packet = new EthPacket(buffer);
+            //if (!packet.PhysicalAddress.Equals(_tapAdapter.PhysicalAddress))
+            //{
+                _tapAdapter.EnqueuePacket(buffer);
+            //}
         }
     }
 
@@ -146,16 +154,20 @@ public class VpnClient
     {
         while (true)
         {
-            byte[] buffer = await _tapAdapter.ReadAsync();
+            //byte[] buffer = await _tapAdapter.ReadAsync();
+            //await Task.Delay(10);
+
+            var packet = _tapAdapter.DequeuePacket();
+            if (packet == null) continue;
             // add mac address filtering to prevent loop
-            var ethPacket = new EthPacket(buffer);
+            var ethPacket = new EthPacket(packet);
             if (!_packetFilterService.IsRestricted(ethPacket.PhysicalAddress))
             {
                 try
                 {
-                    await udp.SendAsync(buffer, buffer.Length);
+                    await udp.SendAsync(packet, packet.Length);
 #if DEBUG
-                    _logger.LogInformation($"Packet sent to remote | {buffer.Length} bytes");
+                    _logger.LogInformation($"Packet sent to remote | {packet.Length} bytes");
 #endif
                 }
                 catch (Exception ex)

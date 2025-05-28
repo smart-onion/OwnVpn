@@ -7,6 +7,7 @@ using System.Net.NetworkInformation;
 using System.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using System;
 
 public class VpnServer
 {
@@ -16,13 +17,13 @@ public class VpnServer
     private readonly ILogger<VpnServer> _logger;
     private readonly IConfigurationRoot _settings;
     private readonly PacketFilterService _packetFilterService;
-    private readonly TapAdapter _tapAdapter;
+    private readonly NetAdapter _tapAdapter;
 
     public VpnServer(
         ILogger<VpnServer> logger,
         IConfigurationRoot settings, 
         PacketFilterService packetFilterService,
-        TapAdapter tapAdapter
+        NetAdapter tapAdapter
         )
     {
         _logger = logger;
@@ -72,44 +73,11 @@ public class VpnServer
             throw;
         }
     }
-    private async Task FromTapToFile()
-    {
-        using(var fs = new FileStream("C:\\Temp\\pcap.pcap",FileMode.Create))
-        {
-            while (true)
-            {
-                var buffer =await _tapAdapter.ReadAsync();
-                //await fs.WriteAsync(buffer, 0, buffer.Length);
-            }
-            
-        }
-    }
-    private async Task ConnectToClient(IPEndPoint endPoint)
-    {
-        using(var udpServer = new UdpClient())
-        {
-            try
-            {
-                _logger.LogInformation($"Trying to connect to client server {endPoint.Address}:{endPoint.Port}...");
-                udpServer.Connect(endPoint);
-                _logger.LogInformation("Connected to the client server.");
-                await udpServer.SendAsync(Encoding.UTF8.GetBytes(_tapAdapter.PhysicalAddress.ToString()));
-                await FromTapToClient(udpServer, endPoint);
-            }
-            catch(Exception ex)
-            {
-                _logger.LogWarning($"Disconnected from client {endPoint.Address}:{endPoint.Port} | {ex.Message}");
-            }
-            finally
-            {
-                clients.Remove(endPoint);
-            }
-        }
-    }
     private async Task FromClientToTap(UdpClient udp)
     {
         while (true)
         {
+            //await Task.Delay(10);
             var receivedResult = await ReadFromClientsAsync(udp);
             if (receivedResult != null)
             {
@@ -118,15 +86,22 @@ public class VpnServer
 #if DEBUG
                 _logger.LogInformation($"Received from remote {bytesRead} bytes");
 #endif
-                await _tapAdapter.WriteAsync(buffer, bytesRead);
+                //await _tapAdapter.WriteAsync(buffer, bytesRead);
+                var packet = new EthPacket(buffer);
+                //if (!packet.PhysicalAddress.Equals(_tapAdapter.PhysicalAddress))
+                //{
+                   _tapAdapter.EnqueuePacket(buffer);
+                //}
             }
         }
     }
     private async Task<UdpReceiveResult?> ReadFromClientsAsync(UdpClient udp)
     {
         var client = await udp.ReceiveAsync();
-
-        if(client.Buffer.Length == sizeof(int))
+#if DEBUG
+        _logger.LogWarning($"Receive from clinet {client.Buffer.Length} | int size {sizeof(int)}");
+#endif
+        if (client.Buffer.Length == sizeof(int))
         {
             if (!clients.Contains(client.RemoteEndPoint))
             {
@@ -151,22 +126,52 @@ public class VpnServer
             return client;
         }
     }
+    private async Task ConnectToClient(IPEndPoint endPoint)
+    {
+        using(var udpServer = new UdpClient())
+        {
+            try
+            {
+                _logger.LogInformation($"Trying to connect to client server {endPoint.Address}:{endPoint.Port}...");
+                udpServer.Connect(endPoint);
+                _logger.LogInformation("Connected to the client server.");
+                await udpServer.SendAsync(Encoding.UTF8.GetBytes(_tapAdapter.PhysicalAddress.ToString()));
+                await FromTapToClient(udpServer, endPoint);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogWarning($"Disconnected from client {endPoint.Address}:{endPoint.Port} | {ex.Message}");
+            }
+            finally
+            {
+                clients.Remove(endPoint);
+            }
+        }
+    }
+    
+    
     private async Task FromTapToClient(UdpClient udp, IPEndPoint endPoint)
     {
         while (true)
         {
-            byte[] buffer = await _tapAdapter.ReadAsync();
-
+#if DEBUG
+            _logger.LogInformation($"START READING FROM TAP");
+#endif
+            var packet = _tapAdapter.DequeuePacket();
+            if (packet == null) continue;
+#if DEBUG
+            _logger.LogInformation($"END READING FROM TAP");
+#endif
             // add mac address filtering to prevent loop
-            var ethPacket = new EthPacket(buffer);
+            var ethPacket = new EthPacket(packet);
 
             if (!_packetFilterService.IsRestricted(ethPacket.PhysicalAddress))
             {
                 try
                 {
-                    await udp.SendAsync(buffer, buffer.Length);
+                    await udp.SendAsync(packet, packet.Length);
 #if DEBUG
-                    _logger.LogInformation($"Packet sent to remote {endPoint.Address}:{endPoint.Port} | {buffer.Length} bytes");
+                    _logger.LogInformation($"Packet sent to remote {endPoint.Address}:{endPoint.Port} | {packet.Length} bytes");
 #endif
                 }
                 catch (Exception ex)
@@ -174,6 +179,18 @@ public class VpnServer
                     _logger.LogWarning($"Error on sending packet to client: {ex.Message}");
                 }
             }
+        }
+    }
+    private async Task FromTapToFile()
+    {
+        using (var fs = new FileStream("C:\\Temp\\pcap.pcap", FileMode.Create))
+        {
+            while (true)
+            {
+                //var buffer = await _tapAdapter.ReadAsync();
+                //await fs.WriteAsync(buffer, 0, buffer.Length);
+            }
+
         }
     }
 }
